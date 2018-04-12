@@ -10,7 +10,7 @@ vals = []
 
 me = fbme("facebook-data")
 
-conversation = me.load_conversation(125)
+conversation = me.load_conversation("Conversation name")
 
 for participant in conversation.participants:
     timeline = conversation.sentiment_timeline(participant)

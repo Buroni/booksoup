@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 me = BookSoup("facebook-data")
-contact = me.load_conversation('Lucien Shearman')
+contact = me.load_conversation('Conversation name')
 times = contact.interaction_freq()
 
 objects = sorted(times.keys())

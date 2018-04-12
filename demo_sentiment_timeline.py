@@ -1,6 +1,6 @@
 import matplotlib as mpl
 mpl.use('TkAgg')
-from booksoup import fbme
+from booksoup import BookSoup
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -8,9 +8,9 @@ times = []
 objects = []
 vals = []
 
-me = fbme("facebook-data")
+me = BookSoup("facebook-data")
 
-conversation = me.load_conversation("Conversation name")
+conversation = me.load_conversation(30)
 
 for participant in conversation.participants:
     timeline = conversation.sentiment_timeline(participant)

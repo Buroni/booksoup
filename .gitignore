@@ -1,0 +1,8 @@
+facebook-data/
+.Python
+include/
+lib/
+man/
+bin/
+_book/
+.idea/

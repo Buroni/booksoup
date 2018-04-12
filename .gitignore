@@ -7,3 +7,4 @@ bin/
 _book/
 .idea/
 .DS_Store
+booksoup/*.pyc

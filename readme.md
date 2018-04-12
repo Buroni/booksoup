@@ -3,6 +3,8 @@
 Booksoup allows you to analyse and traverse your [downloaded facebook data](https://www.facebook.com/help/212802592074644?in_context), 
 including features such as sentiment analysis and message frequency analysis over time.
 
+Booksoup requires [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) and [TextBlob](http://textblob.readthedocs.io/en/dev/), and requires [matplotlib](https://matplotlib.org/) to run the demo graphs.
+
 ## Usage
 
 Initialise a new instance of the `BookSoup` class, passing in the top-level path of your facebook data folder as an argument.

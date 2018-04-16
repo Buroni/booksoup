@@ -29,8 +29,7 @@ for message in convo.messages:
 ```
 
 ### Interaction frequency
-It's possible to see how often messages are sent in a specific conversation at each hour of the day using `interaction_freq`,
-which returns a dict with each key being an hour in the day and the corresponding value being the number of messages sent at that time.
+It's possible to see how often messages are sent in a specific conversation at each hour of the day using `interaction_freq`. This returns a dict with each key being an hour in the day, and the corresponding value being the number of messages sent at that time over the history of the conversation.
 ```python
 me = BookSoup("facebook-data")
 convo = me.load_conversation("John Smith")

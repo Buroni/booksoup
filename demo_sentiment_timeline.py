@@ -8,8 +8,10 @@ times = []
 objects = []
 vals = []
 
+# Enter the path to the top level of your facebook data folder below.
 me = BookSoup("facebook-data")
 
+# Enter the name of the conversation or the numerical ID below.
 conversation = me.load_conversation(104)
 
 for participant in conversation.participants:

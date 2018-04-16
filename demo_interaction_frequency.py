@@ -4,8 +4,12 @@ from booksoup import BookSoup
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Enter the path to the top level of your facebook data folder below.
 me = BookSoup("facebook-data")
+
+# Enter the name of the conversation or the numerical ID below.
 contact = me.load_conversation(274)
+
 times = contact.interaction_freq()
 
 objects = sorted(times.keys())

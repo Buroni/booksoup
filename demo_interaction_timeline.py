@@ -10,7 +10,7 @@ vals = []
 
 me = BookSoup("facebook-data")
 
-conversation = me.load_conversation(30)
+conversation = me.load_conversation("HyunJu Lizy Lee")
 
 for participant in conversation.participants:
     timeline = conversation.interaction_timeline(participant)

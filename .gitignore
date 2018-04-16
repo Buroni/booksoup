@@ -8,3 +8,4 @@ _book/
 .idea/
 .DS_Store
 booksoup/*.pyc
+demos/

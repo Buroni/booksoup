@@ -10,7 +10,7 @@ vals = []
 
 me = BookSoup("facebook-data")
 
-conversation = me.load_conversation(30)
+conversation = me.load_conversation(104)
 
 for participant in conversation.participants:
     timeline = conversation.sentiment_timeline(participant)

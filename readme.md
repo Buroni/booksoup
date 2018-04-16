@@ -91,3 +91,18 @@ for timeline operations, set the `interval` argument, e.g
 ```python
 convo = me.load_conversation("David Grocer", interval="day")
 ```
+
+### Events
+
+Booksoup can extract and categorise event information. This includes title, description, location, timestamp and a 2-element array
+containing the latitude and longitude of the event if available.
+
+```python
+me = BookSoup("facebook-data")
+
+events = me.load_all_events()
+
+# Events are organised into attending, maybe, declined and no_reply:
+for event in events.attending:
+    print(event.title, event.description, event.location, event.timestamp, event.latlon)
+```

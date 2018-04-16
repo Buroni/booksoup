@@ -5,7 +5,6 @@ from Message import Message
 
 
 class Conversation:
-
     def __init__(self, path, interval="month"):
         with open(path, 'r') as f:
             self.__soup = BeautifulSoup(f.read(), "html.parser")

@@ -54,9 +54,11 @@ times = convo.interaction_timeline(me.name)
 ```
 
 Using the `demo_interaction_timeline.py` code, I can visualise in one graph how often everyone in the conversation spoke by building a separate
-timeline for each person. A couple of example graphs are given below.
+timeline for each person.
 
 ![Interaction timeline example](https://i.imgur.com/7BP4GNi.png)
+
+Another example below with one friend over a longer timeline:
 
 ![Single user example](https://i.imgur.com/q6fAgVL.png)
 

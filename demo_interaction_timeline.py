@@ -12,7 +12,7 @@ vals = []
 me = BookSoup("facebook-data")
 
 # Enter the name of the conversation or the numerical ID below.
-conversation = me.load_conversation("Julie Roberts")
+conversation = me.load_conversation(108)
 
 for participant in conversation.participants:
     timeline = conversation.interaction_timeline(participant)

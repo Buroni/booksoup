@@ -1,3 +1,7 @@
+"""Sentiment.py: Uses textblob's sentiment analysis to build user sentiment over time
+or calculate average sentiment of a user."""
+
+
 from textblob import TextBlob
 
 

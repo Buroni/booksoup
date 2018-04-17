@@ -1,3 +1,6 @@
+"""Conversation.py: stores a facebook conversation as a python object,
+and performs some basic analysis on interaction frequency and sentiment."""
+
 from bs4 import BeautifulSoup
 from FbTime import FbTime
 from Sentiment import Sentiment
@@ -22,20 +25,10 @@ class Conversation:
             self.participants = self.__scrape_participants()
 
     def interaction_freq(self):
-        times = self.__fbt.generate_time_dict()
-
-        for date_str in self.__span_meta:
-            time = date_str.split("at ")[1][:5]
-            hour = time.split(":")[0]
-            times[hour+":00"] += 1
-        return times
+        return self.__fbt.interaction_freq()
 
     def interaction_timeline(self, name):
-        dates = self.__fbt.generate_date_dict()
-        for message in self.messages:
-            if message.name == name:
-                dates[message.date] += 1
-        return dates
+        return self.__fbt.interaction_timeline(name, self.messages)
 
     def sentiment_timeline(self, name):
         return self.__sent.sentiment_timeline(name)
@@ -43,6 +36,7 @@ class Conversation:
     def avg_sentiment(self, name):
         return self.__sent.avg_sentiment(name)
 
+    # Returns a list of participants in the conversation.
     def __scrape_participants(self):
         users = []
         for user_span in self.__soup.find_all("span", "user"):

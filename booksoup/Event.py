@@ -1,3 +1,5 @@
+"""Event.py: stores a facebook event as a python object and calculates the
+latitude and longitude of the event if available."""
 
 class Event:
     def __init__(self, title, timestamp, location, description):

@@ -1,12 +1,18 @@
+"""FbTime.py: Contains functions used for generating empty timeline/frequency
+dictionaries, and building them from conversation data"""
+
 import calendar
 from calendar import monthrange
 
 
 class FbTime:
     def __init__(self, span_meta):
+        # Span tags with "meta" class contain a timestamp of when each message was sent.
         self.span_meta = span_meta
 
-    def get_time_freq(self):
+    # Returns a dict where each key is a time on the hour and each value is the number of messages sent
+    # at that time over the history of the conversation.
+    def interaction_freq(self):
         times = self.generate_time_dict()
 
         for date_str in self.span_meta:
@@ -15,13 +21,16 @@ class FbTime:
             times[hour+":00"] += 1
         return times
 
-    def get_timeline(self):
+    # Returns a dict where each key is a date and each value is the number of
+    # messages sent at that date.
+    def interaction_timeline(self, name, messages):
         dates = self.generate_date_dict()
-        for span_str in self.span_meta:
-            date_str = self.span_meta_to_date(span_str)
-            dates[date_str] += 1
+        for message in messages:
+            if message.name == name:
+                dates[message.date] += 1
         return dates
 
+    # Creates a dictionary of times on the hour where each value is 0.
     def generate_time_dict(self):
         times = {}
         for h in range(0,24):
@@ -29,6 +38,7 @@ class FbTime:
             times[time] = 0
         return times
 
+    # Creates a dictionary of dates where each value is 0.
     def generate_date_dict(self, interval="month"):
         dates = {}
         min_date_arr = [int(i) for i in self.span_meta_to_date(self.span_meta[-1], interval).split("-")]
@@ -63,6 +73,7 @@ class FbTime:
             return "0"+str(val)
         return str(val)
 
+    # Converts timestamp in <span class="meta">...</span> to YYYY-MM[-DD] format.
     def span_meta_to_date(self, span_str, interval="month"):
         date_arr = span_str.split(", ")[1].split(" ")[:3]
         date_str = date_arr[2]+"-"+self.__pad(list(calendar.month_name).index(date_arr[1]))

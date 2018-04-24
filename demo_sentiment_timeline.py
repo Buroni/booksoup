@@ -3,16 +3,17 @@ mpl.use('TkAgg')
 from booksoup import BookSoup
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 
 times = []
 objects = []
 vals = []
 
 # Enter the path to the top level of your facebook data folder below.
-me = BookSoup("facebook-data")
+me = BookSoup(sys.argv[2])
 
 # Enter the name of the conversation or the numerical ID below.
-conversation = me.load_conversation(104)
+conversation = me.load_conversation(sys.argv[1])
 
 for participant in conversation.participants:
     timeline = conversation.sentiment_timeline(participant)

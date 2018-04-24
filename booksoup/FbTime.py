@@ -17,8 +17,12 @@ class FbTime:
 
         for date_str in self.span_meta:
             time = date_str.split("at ")[1][:5]
+            amOrPm = date_str.split(":")[1][2:4]
             hour = time.split(":")[0]
-            times[hour+":00"] += 1
+            if len(hour) == 1:
+                times["0"+hour+":00"+amOrPm] += 1
+            else:
+                times[hour+":00"+amOrPm] += 1
         return times
 
     # Returns a dict where each key is a date and each value is the number of
@@ -33,8 +37,11 @@ class FbTime:
     # Creates a dictionary of times on the hour where each value is 0.
     def generate_time_dict(self):
         times = {}
-        for h in range(0,24):
-            time = self.__pad(h) + ":" + "00"
+        for h in range(1,13):
+            time = self.__pad(h) + ":" + "00am"
+            times[time] = 0
+        for h in range(1,13):
+            time = self.__pad(h) + ":" + "00pm"
             times[time] = 0
         return times
 
@@ -80,7 +87,7 @@ class FbTime:
             span_str = ''.join(span_str.rsplit(',', 1))
 
         date_arr = span_str.split(", ")[1].split(" ")[:3]
-        date_str = date_arr[2]+"-"+self.__pad(list(calendar.month_name).index(date_arr[1]))
+        date_str = date_arr[2]+"-"+self.__pad(list(calendar.month_name).index(date_arr[0]))
         if interval == "day":
             date_str += "-"+self.__pad(date_arr[0])
         return date_str

@@ -45,7 +45,7 @@ class BookSoup:
             for link in convo_links:
                 if link.text != search_name:
                     continue
-                contact = Conversation(os.path.join(self.__path, link["href"]))
+                contact = Conversation(os.path.join(self.__path, link["href"]), interval=interval)
                 self.conversations[contact.name] = contact
                 return contact
         return None

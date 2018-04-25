@@ -89,5 +89,17 @@ class FbTime:
         date_arr = span_str.split(", ")[1].split(" ")[:3]
         date_str = date_arr[2]+"-"+self.__pad(list(calendar.month_name).index(date_arr[0]))
         if interval == "day":
-            date_str += "-"+self.__pad(date_arr[0])
+            date_str += "-"+self.__pad(date_arr[1])
         return date_str
+    
+    def get24HourTime(self, elem):
+        amOrPm = elem.split(":")[1][2:4]
+        hour = int(elem.split(":")[0])
+        if amOrPm == "am":
+            if hour == 12:
+                return hour+12
+            return hour
+        else:
+            if hour == 12:
+                return hour
+            return hour+12

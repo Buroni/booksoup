@@ -30,11 +30,14 @@ class Conversation:
     def interaction_timeline(self, name):
         return self.__fbt.interaction_timeline(name, self.messages)
 
-    def sentiment_timeline(self, name):
-        return self.__sent.sentiment_timeline(name)
+    def sentiment_timeline(self, name, interval):
+        return self.__sent.sentiment_timeline(name, interval)
 
     def avg_sentiment(self, name):
         return self.__sent.avg_sentiment(name)
+
+    def get24HourTime(self, elem):
+        return self.__fbt.get24HourTime(elem)
 
     # Returns a list of participants in the conversation.
     def __scrape_participants(self):

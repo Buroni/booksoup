@@ -11,9 +11,9 @@ class Sentiment:
         self.fbt = fbt
         self.messages = messages
 
-    def sentiment_timeline(self, name):
-        timeline = self.fbt.generate_date_dict()
-        sentiment_counts = self.fbt.generate_date_dict()
+    def sentiment_timeline(self, name, interval="month"):
+        timeline = self.fbt.generate_date_dict(interval)
+        sentiment_counts = self.fbt.generate_date_dict(interval)
         for message in self.messages:
             if message.content is None or message.name != name:
                 continue

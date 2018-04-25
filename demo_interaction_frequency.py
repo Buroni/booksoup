@@ -9,24 +9,11 @@ import sys
 me = BookSoup(sys.argv[2])
 
 # Enter the name of the conversation or the numerical ID below.
-contact = me.load_conversation(sys.argv[1])
+contact = me.load_conversation(sys.argv[1], sys.argv[3])
 
 times = contact.interaction_freq()
-def get24HourTime(elem):
-    amOrPm = elem.split(":")[1][2:4]
-    hour = int(elem.split(":")[0])
-    if amOrPm == "am":
-        if hour == 12:
-            return hour+12
-        return hour
-    else:
-        if hour == 12:
-            return hour
-        return hour+12
 
-
-objects = sorted(times.keys(), key=get24HourTime)
-print objects
+objects = sorted(times.keys(), key=contact.get24HourTime)
 y_pos = np.arange(len(objects))
 vals = [times[t] for t in objects]
 

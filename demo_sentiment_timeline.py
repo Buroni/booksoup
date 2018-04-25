@@ -11,12 +11,13 @@ vals = []
 
 # Enter the path to the top level of your facebook data folder below.
 me = BookSoup(sys.argv[2])
+interval = sys.argv[3]
 
 # Enter the name of the conversation or the numerical ID below.
-conversation = me.load_conversation(sys.argv[1])
+conversation = me.load_conversation(sys.argv[1], interval=interval)
 
 for participant in conversation.participants:
-    timeline = conversation.sentiment_timeline(participant)
+    timeline = conversation.sentiment_timeline(participant, interval)
     sorted_keys = sorted(timeline.keys())
     times.append(timeline)
     objects.append(sorted_keys)

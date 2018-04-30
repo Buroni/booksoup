@@ -18,7 +18,7 @@ class FbTime:
         for date_str in self.span_meta:
             time = date_str.split("at ")[1][:5]
             hour = time.split(":")[0]
-            times[hour+":00"] += 1
+            times[self.__pad(hour)+":00"] += 1
         return times
 
     # Returns a dict where each key is a date and each value is the number of
@@ -69,8 +69,9 @@ class FbTime:
         return dates
 
     def __pad(self, val):
-        if int(val) < 10:
-            return "0"+str(val)
+        int_val = int(val)
+        if int_val < 10:
+            return "0"+str(int_val)
         return str(val)
 
     # Converts timestamp in <span class="meta">...</span> to YYYY-MM[-DD] format.

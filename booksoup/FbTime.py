@@ -75,11 +75,23 @@ class FbTime:
 
     # Converts timestamp in <span class="meta">...</span> to YYYY-MM[-DD] format.
     def span_meta_to_date(self, span_str, interval="month"):
+        span_str = 'Wednesday, September 29 2010 at 3:00pm PDT';
         # Remove all occurences of commas except the first one
         if span_str.count(",") == 2:
             span_str = ''.join(span_str.rsplit(',', 1))
 
         date_arr = span_str.split(", ")[1].split(" ")[:3]
+
+        # Re-arrange date_arr if format is month-day-year.
+        try:
+            a = int(date_arr[0])
+            print(a, date_arr[0])
+        except ValueError:
+            shuffled_date_arr = [date_arr[1], date_arr[0], date_arr[2]]
+            date_arr = shuffled_date_arr
+
+        print(date_arr)
+
         date_str = date_arr[2]+"-"+self.__pad(list(calendar.month_name).index(date_arr[1]))
         if interval == "day":
             date_str += "-"+self.__pad(date_arr[0])
